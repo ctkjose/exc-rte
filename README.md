@@ -29,6 +29,7 @@ Enable the use of toolbars by setting the option `use_toolbar` to true.
 Toolbars items are created with the function `addToolbarItem(item)`. This function takes as argument a toolbar item definition.
 
 A toolbar item definition is a literal object with the following properties:
+
 |Property|Description|
 |---|---|
 |tag|A unique string identifier for the item.|
