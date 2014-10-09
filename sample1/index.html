@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr-ch" lang="fr-ch">
+<head>
+<title>A light weight RTE jQuery Plugin</title>
+<link type="text/css" rel="stylesheet" href="../jquery.rte.css" />
+<style type="text/css">
+body {
+	font-family: sans-serif;
+	font-size: 12px;
+}
+.rte_textbody font[size="1"] {
+	font-size: 12px !important;
+}
+.rte_textbody font[size="2"] {
+	font-size: 13px !important;
+}
+.rte_textbody font[size="3"] {
+	font-size: 16px !important;
+}
+
+.color {
+	background-image: url(./color_swatch.png);
+}
+.size {
+	background-image: url(./text_size.png);
+
+}
+.remove_format {
+	background-image: url(./style_delete.png);
+}
+.bold {
+	background-image: url(./text_bold.png);
+}
+.italic {
+	background-image: url(./text_italic.png);
+}
+.underline {
+	background-image: url(./text_underline.png);
+}
+
+.color_box {
+	float: left;
+	height: 16px;
+	width: 16px;
+	
+	padding: 1px 1px 1px 1px !important;
+}
+.rte_color_entry {
+	height: 14px;
+	width: 14px;
+	border: 1px solid #ffffff;
+	display: inline-block;
+}
+</style>
+</head>
+<body>
+<div id="main">
+
+<h1>ExpressCode RTE jQuery Plugin</h1>
+
+<p>Sample 1</p>
+<p>Creating a basic toolbar and registering some callbacks.</p>
+
+<form method='post' action='test.php'>
+    <p>
+        <textarea name="description" id="id_description" class="rte_zone" rows='10' cols='40'>jQuery RTE 1</textarea>
+    </p>
+    <p>
+        <textarea name="description2" id="id_description2" class="rte_zone" height="150">jQuery RTE 2</textarea>
+    </p>
+    <input type="submit" />
+</form>
+    
+<script type="text/javascript" src="../../jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../jquery.rte.js"></script>
+<script type="text/javascript">
+
+$(".rte_zone").rte({
+    use_toolbar: true,
+    event_loaded: callback_loaded,
+    event_contextmenu: null,
+    event_mouseup: callback_mouseup,
+    event_mousedown: null,
+    event_keyup: null,
+    event_keydown: null,
+});
+
+function toolbar_button_size(obj, tag, value){
+    this.execCommand('fontsize', value);
+}
+function toolbar_button_color(obj, tag, value){
+    this.execCommand('forecolor', value);
+}
+function callback_mouseup(event){
+    
+}
+
+function callback_loaded(){
+    
+    var item = { tag: 'bold', execCommand: 'bold', execOptions: null, };
+    this.addToolbarItem(item);
+    
+    item = { tag: 'italic', execCommand: 'italic', execOptions: null, };
+    this.addToolbarItem(item);
+    
+    item = { tag: 'underline', execCommand: 'underline', execOptions: null, };
+    this.addToolbarItem(item);
+    
+    var options = [
+      [3, 'Big'],
+      [2, 'Large'],
+      [1, 'Regular'],
+    ];
+    
+    item = { tag: 'dosomething', callback: toolbar_button_size, 'class': 'size', 'options': options };
+    this.addToolbarItem(item);
+    
+    
+    var colors = [
+		'#F50C00', '#F88B00', '#FFFF00', '#5AFF00', '#59FFFF', '#0000FF', '#F600FF', '#535353', '#B8B8B8',
+		'#FCD35B', '#D5FF46', '#84FFCA', '#7ACDFF', '#CB65FF', '#000000', '#CDCDCD', '#6D6D6D', '#9F9F9F',
+		'#6C60FF', '#287FFF', '#830400'
+	];
+    
+    options = new Array();
+    for (var key in colors){
+        var e = new Array();
+        e[0] = colors[key];
+        e[1] = "<span class='rte_color_entry' style='background-color: " + e[0] + "'></span>";
+        options.push(e);
+    }
+    
+    item = { tag: 'cmd_color', callback: toolbar_button_color, 'class': 'color', 'options': options, 'class_popup': 'color_box' };
+    this.addToolbarItem(item);
+    
+    item = { tag: 'remove_format', execCommand: 'removeFormat', execOptions: null, };
+    this.addToolbarItem(item);
+    
+	item = { tag: 'test1', callback: function(obj, tag, value){ this.setSelectionHTML("jose") }, 'class': 'color' };
+    this.addToolbarItem(item);
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+
+.rte_widget {
+	margin: 0px 0px 0px 0px;
+	border: 1px solid #cccccc;
+	overflow: hidden;
+}
+
+.rte_toolbar {
+	background-color: #E2E2E2;
+	height: 22px;
+	border-bottom: 1px solid #E2E2E2;
+	
+}
+.rte_bttn {
+	display: inline-block;
+	height: 16px;
+	width: 16px;
+	border: 1px solid #E2E2E2;
+	margin: 2px 2px 2px 2px;
+	background-repeat: no-repeat;
+	border-radius: 3px;
+}
+.rte_bttn:hover {
+	border: 1px solid #CCCCCC;
+}
+.rte_bttn.rte_bttn_noaction:hover {
+	border: 1px solid #E2E2E2;
+}
+.rte_textbody {
+	outline-style:none;
+	font-family: sans-serif;
+	font-size: 12px;
+
+	padding: 2px 2px 2px 2px;
+	border: 0px solid red;
+	
+	overflow: auto;
+}
+/* Styles for toolbar buttons */
+.rte_popupmnu {
+	position: absolute;
+	display: block;
+	width: 120px;
+	border: 1px solid #7E7E7E;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	background-color: #ffffff;
+}
+.rte_popupmnu a, .rte_popupmnu a:visited {
+	display: block;
+	text-decoration: none;
+	color: #222222;
+	padding: 2px 2px 2px 2px;
+	font-size: 11px;
+}
+.rte_popupmnu a:hover {
+	color: #ffffff;
+	background-color: #205DA0;
+}
+
+
+
+
